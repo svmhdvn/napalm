@@ -48,7 +48,7 @@ module.exports = Napalm =
           console.log window.func = func
           text = Escodegen.generate(func.node)
           console.log("module.exports = " + text)
-	else
+    else
       @tried = true
       @modalPanel.show()
 
