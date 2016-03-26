@@ -1,7 +1,9 @@
-NapalmView = require './napalm-view'
 {CompositeDisposable} = require 'atom'
 Acorn = require 'acorn'
 Escodegen = require 'escodegen'
+
+NapalmView = require './napalm-view'
+Github = require './helpers/github'
 
 module.exports = Napalm =
   napalmView: null
@@ -46,10 +48,15 @@ module.exports = Napalm =
           console.log window.func = func
           text = Escodegen.generate(func.node)
           console.log("module.exports = " + text)
-    else
+	else
       @tried = true
       @modalPanel.show()
 
+    Github.updateFile('test', 'lol.js', 'console.log("YUHTLHHRUPWFP")')
+    .then (body) ->
+      console.log 'Github successfully processed with response: ', body
+    .catch (error) ->
+      console.log 'Github failed with error: ', error
 
   findFunction: (node) ->
     if node.type is 'FunctionDeclaration'
