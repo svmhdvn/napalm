@@ -1,4 +1,4 @@
-# blah package
+# napalm package
 
 A short description of your package.
 

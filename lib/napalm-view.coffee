@@ -1,13 +1,13 @@
 module.exports =
-class BlahView
+class NapalmView
   constructor: (serializedState) ->
     # Create root element
     @element = document.createElement('div')
-    @element.classList.add('blah')
+    @element.classList.add('napalm')
 
     # Create message element
     message = document.createElement('div')
-    message.textContent = "The Blah package is Alive! It's ALIVE!"
+    message.textContent = "The Napalm package is Alive! It's ALIVE!"
     message.classList.add('message')
     @element.appendChild(message)
 

@@ -1,14 +1,14 @@
 {
-  "name": "blah",
-  "main": "./lib/blah",
+  "name": "napalm",
+  "main": "./lib/napalm",
   "version": "0.0.0",
   "description": "A short description of your package",
   "keywords": [
   ],
   "activationCommands": {
-    "atom-workspace": "blah:toggle"
+    "atom-workspace": "napalm:toggle"
   },
-  "repository": "https://github.com/atom/blah",
+  "repository": "https://github.com/atom/napalm",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"

@@ -1,31 +1,31 @@
-BlahView = require './blah-view'
+NapalmView = require './napalm-view'
 {CompositeDisposable} = require 'atom'
 
-module.exports = Blah =
-  blahView: null
+module.exports = Napalm =
+  napalmView: null
   modalPanel: null
   subscriptions: null
 
   activate: (state) ->
-    @blahView = new BlahView(state.blahViewState)
-    @modalPanel = atom.workspace.addModalPanel(item: @blahView.getElement(), visible: false)
+    @napalmView = new NapalmView(state.napalmViewState)
+    @modalPanel = atom.workspace.addModalPanel(item: @napalmView.getElement(), visible: false)
 
     # Events subscribed to in atom's system can be easily cleaned up with a CompositeDisposable
     @subscriptions = new CompositeDisposable
 
     # Register command that toggles this view
-    @subscriptions.add atom.commands.add 'atom-workspace', 'blah:toggle': => @toggle()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'napalm:toggle': => @toggle()
 
   deactivate: ->
     @modalPanel.destroy()
     @subscriptions.dispose()
-    @blahView.destroy()
+    @napalmView.destroy()
 
   serialize: ->
-    blahViewState: @blahView.serialize()
+    napalmViewState: @napalmView.serialize()
 
   toggle: ->
-    console.log 'Blah was toggled!'
+    console.log 'Napalm was toggled!'
 
     if @modalPanel.isVisible()
       @modalPanel.hide()

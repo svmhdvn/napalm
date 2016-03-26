@@ -2,19 +2,19 @@
 'context-menu':
   'atom-text-editor': [
     {
-      'label': 'Toggle blah'
-      'command': 'blah:toggle'
+      'label': 'Toggle napalm'
+      'command': 'napalm:toggle'
     }
   ]
 'menu': [
   {
     'label': 'Packages'
     'submenu': [
-      'label': 'blah'
+      'label': 'napalm'
       'submenu': [
         {
           'label': 'Toggle'
-          'command': 'blah:toggle'
+          'command': 'napalm:toggle'
         }
       ]
     ]
