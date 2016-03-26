@@ -43,8 +43,22 @@ module.exports = Napalm =
     if atom.config.get 'napalm.github.password'
       if editor = atom.workspace.getActiveTextEditor()
         selection = editor.getSelectedText()
+        useSelection = true
+        if selection.length is 0
+          useSelection = false
+          selection = editor.getText()
         ast = Acorn.parse selection
-        if func = @findFunction(ast)
+        removed = 0
+        for func in @findFunctions ast
+          requireString = "var #{func.name} = require('#{atom.config.get 'napalm.github.username'}-#{func.name}')"
+          if useSelection
+            editor.setTextInBufferRange editor.getSelectedBufferRange(), requireString
+          else
+            file = editor.getText()
+            sub = file.substr func.parent.start - removed, func.parent.end - func.parent.start
+            removed += sub.length - requireString.length
+            file = file.replace sub, requireString
+            editor.setText file
           console.log window.func = func
           text = Escodegen.generate(func.node)
           console.log("module.exports = " + text)
@@ -52,24 +66,26 @@ module.exports = Napalm =
       @tried = true
       @modalPanel.show()
 
-    Github.updateFile('test', 'lol.js', 'console.log("YUHTLHHRUPWFP")')
-    .then (body) ->
-      console.log 'Github successfully processed with response: ', body
-    .catch (error) ->
-      console.log 'Github failed with error: ', error
+    # Github.updateFile('test', 'lol.js', 'console.log("YUHTLHHRUPWFP")')
+    # .then (body) ->
+    #   console.log 'Github successfully processed with response: ', body
+    # .catch (error) ->
+    #   console.log 'Github failed with error: ', error
 
-  findFunction: (node) ->
+  findFunctions: (node) ->
     if node.type is 'FunctionDeclaration'
       name = node.id.name
       node.id.name = ''
-      return name: name, node: node
+      return name: name, node: node, parent: node
     else if node.type is 'VariableDeclaration' and node.declarations.length == 1
       declaration = node.declarations[0]
       if declaration.type is 'VariableDeclarator' and declaration.init.type is 'FunctionExpression'
-        return name: declaration.id.name, node: declaration.init
+        return name: declaration.id.name, node: declaration.init, parent: node
     else if node.type is 'Program'
+      results = []
       for n in node.body
-        if result = @findFunction(n)
-          return result
+        if result = @findFunctions(n)
+          results.push result
+      return results
 
     return null
