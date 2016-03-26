@@ -1,6 +1,6 @@
 *If you are the legal team of a preexisting company called Napalm, you can f@%& off*
 
-# Napalm
+![Napalm](https://raw.githubusercontent.com/cheeselover/napalm/master/logo.jpeg)
 #### Everyone's favourite way to create useless Node dependencies - right from your text editor!
 
 Napalm is an Atom plugin that provides a way to seamlessly and quickly create new NPM packages for your locally defined functions. This makes it EXTREMELY easy to keep your code 100% reusable with low coupling and high isolation. Additionally, the entire WORLD can use your functions, so you will make a significant contribution to the Node ecosystem!!11!1!!!1!one!!1!
