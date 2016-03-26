@@ -4,7 +4,15 @@
   "version": "1.0.0",
   "description": "Atom plugin for automatically creating useless Node dependencies.",
   "keywords": [
-    "napalm", "node", "dependencies", "community", "ecosystem", "coupling", "reusability", "isolation", "atom"
+    "napalm",
+    "node",
+    "dependencies",
+    "community",
+    "ecosystem",
+    "coupling",
+    "reusability",
+    "isolation",
+    "atom"
   ],
   "activationCommands": {
     "atom-workspace": "napalm:package"
@@ -18,6 +26,11 @@
     "acorn": "^3.0.4",
     "escodegen": "^1.8.0",
     "loophole": "^1.1.0",
+    "napalmtest-display": "^6.0.0",
+    "napalmtest-factorial": "^7.0.0",
+    "napalmtest-fizzbuzz": "^5.0.0",
+    "napalmtest-maze": "^6.0.0",
+    "napalmtest-sum": "^9.0.0",
     "request": "^2.69.0",
     "sha1": "^1.1.1"
   }

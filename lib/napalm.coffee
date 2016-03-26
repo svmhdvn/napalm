@@ -56,7 +56,6 @@ module.exports = Napalm =
             exec "rm -rf ~/#{repo}", (error) ->
               if error then console.log error
               projectRoot = atom.project.relativizePath(Napalm.editor.getDirectoryPath())[0]
-              console.log 'project root: ', projectRoot
               exec "cd #{projectRoot} && npm install --save #{packageName}@#{version}", (error) ->
                 resolve("Successfully polluted the Node ecosystem with '#{repo}' :)")
 

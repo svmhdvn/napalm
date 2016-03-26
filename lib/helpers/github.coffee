@@ -25,6 +25,8 @@ module.exports = Github =
   createRepo: (name) ->
     api('/user/repos', 'POST', {
       name: name
+      description: name
+      auto_init: true
     })
 
   # https://developer.github.com/v3/repos/contents/#create-a-file
