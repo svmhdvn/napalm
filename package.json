@@ -3,8 +3,7 @@
   "main": "./lib/napalm",
   "version": "0.0.1",
   "description": "TerribleHack 2016",
-  "keywords": [
-  ],
+  "keywords": [],
   "activationCommands": {
     "atom-workspace": "napalm:toggle"
   },
@@ -14,6 +13,7 @@
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
-    "acorn": "^3.0.4"
+    "acorn": "^3.0.4",
+    "escodegen": "^1.8.0"
   }
 }
