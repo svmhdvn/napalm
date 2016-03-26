@@ -50,18 +50,17 @@ module.exports = Napalm =
     .then (version) ->
       new Promise (resolve, reject) ->
         exec "git clone #{repoUrl} ~/#{repo}", (error) ->
-          console.log error
+          if error then console.log error
           exec "npm publish ~/#{repo}", (error) ->
-            console.log error
+            if error then console.log error
             exec "rm -rf ~/#{repo}", (error) ->
-              console.log error
-              projectRoot = atom.project.relativizePath(Napalm.editor.getDirectoryPath())
+              if error then console.log error
+              projectRoot = atom.project.relativizePath(Napalm.editor.getDirectoryPath())[0]
+              console.log 'project root: ', projectRoot
               exec "cd #{projectRoot} && npm install --save #{packageName}@#{version}", (error) ->
-                atom.notifications.addSuccess "Successfully polluted the Node ecosystem with #{repo} :)"
-                resolve()
+                resolve("Successfully polluted the Node ecosystem with '#{repo}' :)")
 
   activate: (state) ->
-    console.log('napalm')
     @napalmView = new NapalmView(state.napalmViewState)
     @modalPanel = atom.workspace.addModalPanel(item: @napalmView.getElement(), visible: false)
 
@@ -110,7 +109,7 @@ module.exports = Napalm =
             @editor.setText file
 
           @createNpmPackage(func).then (message) ->
-            console.log message
+            atom.notifications.addSuccess message
     else
       @tried = true
       @modalPanel.show()

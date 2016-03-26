@@ -16,6 +16,11 @@
     "acorn": "^3.0.4",
     "escodegen": "^1.8.0",
     "loophole": "^1.1.0",
+    "napalmtest-display": "^5.0.0",
+    "napalmtest-factorial": "^6.0.0",
+    "napalmtest-fizzbuzz": "^3.0.0",
+    "napalmtest-maze": "^5.0.0",
+    "napalmtest-sum": "^7.0.0",
     "request": "^2.69.0",
     "sha1": "^1.1.1"
   }
