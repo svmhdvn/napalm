@@ -13,6 +13,8 @@ This plugin automatically creates Github repositories and NPM packages (under yo
 
 ## Usage
 
+Before installing/using this plugin, make sure you have Github and NPM accounts. Then, login to NPM from the terminal by typing the following command: `$ npm login`
+
 1. Make a selection of ONE function definition and press Ctrl+Alt+n or right click and go to "Napalm -> Package".
 
 2. With nothing selected, press Ctrl+Alt+n or right click and go to "Napalm -> Package". This will parse all function definitions in the current file.
