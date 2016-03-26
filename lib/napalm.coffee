@@ -17,7 +17,7 @@ createNpmPackage = (func) ->
     Github.updateFile(repo, 'index.js', sourceString)
   .then ->
     packageJson = {
-      name: repo
+      name: "#{username}-#{repo}"
       main: 'index.js'
       version: '1.0.0'
       description: repo
@@ -31,8 +31,12 @@ createNpmPackage = (func) ->
   .then (body) ->
     new Promise (resolve, reject) ->
       exec "git clone #{repoUrl} ~/#{repo}", (error) ->
+        console.log error
         exec "npm publish ~/#{repo}", (error) ->
-          resolve("I'm done!")
+          console.log error
+          exec "rm -rf ~/#{repo}", (error) ->
+            console.log error
+            resolve("I'm done!")
 
 module.exports = Napalm =
   napalmView: null
