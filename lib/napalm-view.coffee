@@ -20,3 +20,7 @@ class NapalmView
 
   getElement: ->
     @element
+
+  setCount: (count) ->
+    displayText = "There are #{count} words."
+    @element.children[0].textContent = displayText

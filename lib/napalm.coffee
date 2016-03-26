@@ -16,6 +16,7 @@ module.exports = Napalm =
 
     # Register command that toggles this view
     @subscriptions.add atom.commands.add 'atom-workspace', 'napalm:toggle': => @toggle()
+    window.Acorn = Acorn
 
   deactivate: ->
     @modalPanel.destroy()
@@ -26,9 +27,5 @@ module.exports = Napalm =
     napalmViewState: @napalmView.serialize()
 
   toggle: ->
-    console.log "Napalm was toggled! #{Acorn}"
-
-    if @modalPanel.isVisible()
-      @modalPanel.hide()
-    else
-      @modalPanel.show()
+    if editor = atom.workspace.getActiveTextEditor()
+      selection = editor.getSelectedText()
