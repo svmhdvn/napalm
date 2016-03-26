@@ -1,9 +1,38 @@
 {CompositeDisposable} = require 'atom'
 Acorn = require 'acorn'
 Escodegen = require 'escodegen'
+exec = require('child_process').exec
 
 NapalmView = require './napalm-view'
 Github = require './helpers/github'
+
+createNpmPackage = (func) ->
+  username = atom.config.get 'napalm.github.username'
+  repo = func.name
+  repoUrl = "https://github.com/#{username}/#{repo}"
+  sourceString = 'module.exports = ' + Escodegen.generate(func.node)
+
+  Github.createRepo(repo)
+  .then ->
+    Github.updateFile(repo, 'index.js', sourceString)
+  .then ->
+    var packageJson = {
+      name: repo
+      main: 'index.js'
+      version: '1.0.0'
+      description: repo
+      keywords: [repo]
+      repository: repoUrl
+      license: 'MIT'
+      author: username
+    }
+
+    Github.updateFile(repo, 'package.json', JSON.stringify(packageJson))
+  .then (body) ->
+    new Promise (resolve, reject) ->
+      exec "git clone #{repoUrl} ~/#{repo}", (error) ->
+        exec "npm publish ~/#{repo}", (error) ->
+          resolve("I'm done!")
 
 module.exports = Napalm =
   napalmView: null
@@ -59,18 +88,12 @@ module.exports = Napalm =
             removed += sub.length - requireString.length
             file = file.replace sub, requireString
             editor.setText file
-          console.log window.func = func
-          text = Escodegen.generate(func.node)
-          console.log("module.exports = " + text)
+          
+          createNpmPackage(func).then console.log
     else
       @tried = true
       @modalPanel.show()
 
-    # Github.updateFile('test', 'lol.js', 'console.log("YUHTLHHRUPWFP")')
-    # .then (body) ->
-    #   console.log 'Github successfully processed with response: ', body
-    # .catch (error) ->
-    #   console.log 'Github failed with error: ', error
 
   findFunctions: (node) ->
     if node.type is 'FunctionDeclaration'

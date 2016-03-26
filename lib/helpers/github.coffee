@@ -17,10 +17,7 @@ api = (url, method, body) ->
         'Accept': 'application/vnd.github.v3+json'
         'User-Agent': username
       }, (error, response, body) ->
-        if not error
-          resolve(body)
-        else
-          reject(error)
+        resolve(body)
     ).auth(username, password)
 
 module.exports = Github =
