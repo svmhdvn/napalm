@@ -4,9 +4,6 @@
   "version": "0.0.1",
   "description": "TerribleHack 2016",
   "keywords": [],
-  "activationCommands": {
-    "atom-workspace": "napalm:toggle"
-  },
   "repository": "https://github.com/cheeselover/napalm",
   "license": "MIT",
   "engines": {

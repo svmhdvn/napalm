@@ -8,7 +8,10 @@ module.exports = Napalm =
   modalPanel: null
   subscriptions: null
 
+  tried: false
+
   activate: (state) ->
+    console.log('napalm')
     @napalmView = new NapalmView(state.napalmViewState)
     @modalPanel = atom.workspace.addModalPanel(item: @napalmView.getElement(), visible: false)
 
@@ -20,6 +23,12 @@ module.exports = Napalm =
     window.Acorn = Acorn
     window.Escodegen = Escodegen
 
+    atom.config.observe 'napalm.github.password', =>
+      if @tried and @modalPanel.isVisible()
+        @tried = false
+        @modalPanel.hide()
+        @toggle()
+
   deactivate: ->
     @modalPanel.destroy()
     @subscriptions.dispose()
@@ -29,13 +38,17 @@ module.exports = Napalm =
     napalmViewState: @napalmView.serialize()
 
   toggle: ->
-    if editor = atom.workspace.getActiveTextEditor()
-      selection = editor.getSelectedText()
-      ast = Acorn.parse selection
-      if func = @findFunction(ast)
-        console.log window.func = func
-        text = Escodegen.generate(func.node)
-        console.log("module.exports = " + text)
+    if atom.config.get 'napalm.github.password'
+      if editor = atom.workspace.getActiveTextEditor()
+        selection = editor.getSelectedText()
+        ast = Acorn.parse selection
+        if func = @findFunction(ast)
+          console.log window.func = func
+          text = Escodegen.generate(func.node)
+          console.log("module.exports = " + text)
+    else
+      @tried = true
+      @modalPanel.show()
 
 
   findFunction: (node) ->
