@@ -1,11 +1,13 @@
 {
   "name": "Napalm",
   "main": "./lib/napalm",
-  "version": "0.0.1",
-  "description": "TerribleHack 2016",
-  "keywords": [],
+  "version": "1.0.0",
+  "description": "Atom plugin for automatically creating useless Node dependencies.",
+  "keywords": [
+    "napalm", "node", "dependencies", "community", "ecosystem", "coupling", "reusability", "isolation", "atom"
+  ],
   "activationCommands": {
-    "atom-workspace": "napalm:toggle"
+    "atom-workspace": "napalm:package"
   },
   "repository": "https://github.com/cheeselover/napalm",
   "license": "MIT",
@@ -16,11 +18,6 @@
     "acorn": "^3.0.4",
     "escodegen": "^1.8.0",
     "loophole": "^1.1.0",
-    "napalmtest-display": "^5.0.0",
-    "napalmtest-factorial": "^6.0.0",
-    "napalmtest-fizzbuzz": "^3.0.0",
-    "napalmtest-maze": "^5.0.0",
-    "napalmtest-sum": "^7.0.0",
     "request": "^2.69.0",
     "sha1": "^1.1.1"
   }
