@@ -68,7 +68,7 @@ module.exports = Napalm =
     @subscriptions = new CompositeDisposable
 
     # Register command that toggles this view
-    @subscriptions.add atom.commands.add 'atom-workspace', 'napalm:toggle': => @toggle()
+    @subscriptions.add atom.commands.add 'atom-workspace', 'napalm:package': => @package()
     window.Acorn = Acorn
     window.Escodegen = Escodegen
 
@@ -76,7 +76,7 @@ module.exports = Napalm =
       if @tried and @modalPanel.isVisible()
         @tried = false
         @modalPanel.hide()
-        @toggle()
+        @package()
 
   deactivate: ->
     @modalPanel.destroy()
@@ -86,7 +86,7 @@ module.exports = Napalm =
   serialize: ->
     napalmViewState: @napalmView.serialize()
 
-  toggle: ->
+  package: ->
     if atom.config.get 'napalm.github.password'
       @editor = atom.workspace.getActiveTextEditor()
       if @editor
