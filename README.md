@@ -1,4 +1,5 @@
-# Napalm - Everyone's favourite way to manage Node dependencies
+# Napalm
+### Everyone's favourite way to manage Node dependencies
 
 Provides a way to seamlessly and quickly create NPM packages for your locally defined functions. This makes it EXTREMELY easy to keep your code 100% reusable with low coupling and high isolation. Additionally, the WORLD can use your functions and you will make a significant contribution to the Node ecosystem!!11!1!!!1!one!!1!
 
