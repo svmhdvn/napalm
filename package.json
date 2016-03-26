@@ -14,8 +14,9 @@
   },
   "dependencies": {
     "acorn": "^3.0.4",
+    "escodegen": "^1.8.0",
+    "loophole": "^1.1.0",
     "request": "^2.69.0",
-    "sha1": "^1.1.1",
-    "escodegen": "^1.8.0"
+    "sha1": "^1.1.1"
   }
 }

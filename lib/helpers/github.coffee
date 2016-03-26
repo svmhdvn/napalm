@@ -42,10 +42,10 @@ module.exports = Github =
 
     if checksumCache[repo]
       sha = checksumCache[repo]
-      message = 'first commit of this useless package lol'
+      message = "Updated file #{filePath}"
       return update()
     else
-      message = 'updated package'
+      message = "Created file #{filePath} for this useless package lol"
 
       return api("/repos/#{username}/#{repo}/contents/#{filePath}")
         .then (body) ->
