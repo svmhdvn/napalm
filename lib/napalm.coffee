@@ -93,7 +93,8 @@ module.exports = Napalm =
             file = file.replace sub, requireString
             editor.setText file
 
-          createNpmPackage(func).then console.log
+          createNpmPackage(func).then (message) ->
+            console.log message
     else
       @tried = true
       @modalPanel.show()
