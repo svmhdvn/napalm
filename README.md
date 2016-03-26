@@ -1,3 +1,5 @@
+*If you are the legal team of a preexisting company called Napalm, you can f@%& off*
+
 # Napalm
 #### Everyone's favourite way to create useless Node dependencies - right from your text editor!
 
@@ -14,6 +16,3 @@ This plugin automatically creates Github repositories and NPM packages (under yo
 1. Make a selection of ONE function definition and press Ctrl+Alt+n or right click and go to "Napalm -> Package".
 
 2. With nothing selected, press Ctrl+Alt+n or right click and go to "Napalm -> Package". This will parse all function definitions in the current file.
-
-
-*If you are the legal team of a preexisting company called Napalm, you can f@%& off*
