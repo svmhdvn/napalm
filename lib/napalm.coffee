@@ -16,7 +16,7 @@ createNpmPackage = (func) ->
   .then ->
     Github.updateFile(repo, 'index.js', sourceString)
   .then ->
-    var packageJson = {
+    packageJson = {
       name: repo
       main: 'index.js'
       version: '1.0.0'
@@ -88,7 +88,7 @@ module.exports = Napalm =
             removed += sub.length - requireString.length
             file = file.replace sub, requireString
             editor.setText file
-          
+
           createNpmPackage(func).then console.log
     else
       @tried = true
