@@ -1,5 +1,6 @@
 NapalmView = require './napalm-view'
 {CompositeDisposable} = require 'atom'
+Acorn = require 'acorn'
 
 module.exports = Napalm =
   napalmView: null
@@ -25,7 +26,7 @@ module.exports = Napalm =
     napalmViewState: @napalmView.serialize()
 
   toggle: ->
-    console.log 'Napalm was toggled!'
+    console.log "Napalm was toggled! #{Acorn}"
 
     if @modalPanel.isVisible()
       @modalPanel.hide()
