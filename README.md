@@ -13,7 +13,7 @@ This plugin automatically creates Github repositories and NPM packages (under yo
 
 ## Usage
 
-Before installing/using this plugin, make sure you have Github and NPM accounts. Then, login to NPM from the terminal by typing the following command: `$ npm login`
+Before installing/using this plugin, make sure you have Github and NPM accounts. Then, login to NPM from the terminal by typing the following command: `$ npm login`. Also, MAKE SURE YOU OPEN ATOM FROM THE TERMINAL. There are a lot of issues with the Atom editor on Mac OSX, so instead of opening it via the Applications folder, just type `$ atom` in your terminal.
 
 1. Make a selection of ONE function definition and press Ctrl+Alt+n or right click and go to "Napalm -> Package".
 
